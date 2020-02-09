@@ -99,13 +99,12 @@
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                        <!--
                         <configuration>
 			                <additionalOptions>
 			                    <additionalOption>-Xdoclint:none</additionalOption>
 			                </additionalOptions>
+			                <failOnError>false</failOnError>
 			            </configuration>
-                        -->
                     </execution>
                 </executions>
             </plugin>

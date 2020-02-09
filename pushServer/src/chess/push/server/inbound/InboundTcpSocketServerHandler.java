@@ -13,9 +13,9 @@ import io.netty.channel.SimpleChannelInboundHandler;
 /**
  * Inbound Server와 송신자간 연결된 채널에서 발생하는 이벤트 처리용 핸들러
  */
-public class InboundServerHandler extends SimpleChannelInboundHandler<PushMessage> {
+public class InboundTcpSocketServerHandler extends SimpleChannelInboundHandler<PushMessage> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(InboundServerHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InboundTcpSocketServerHandler.class);
 
     private final Map<String, InboundQueue> inboundQueues;		// Inbound Queue collection
 
@@ -23,7 +23,7 @@ public class InboundServerHandler extends SimpleChannelInboundHandler<PushMessag
      * constructor with a parameter
      * @param inboundQueues Inbound Queue collection
      */
-    public InboundServerHandler(Map<String, InboundQueue> inboundQueues) {
+    public InboundTcpSocketServerHandler(Map<String, InboundQueue> inboundQueues) {
         this.inboundQueues = inboundQueues;
     }
 

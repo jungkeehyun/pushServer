@@ -7,7 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import chess.push.server.inbound.InboundServer;
+import chess.push.server.inbound.InboundTcpSocketServer;
 import chess.push.server.outbound.OutboundServer;
 import chess.push.server.outbound.OutboundServerFactory;
 import chess.push.server.property.PushBaseProperty;
@@ -30,7 +30,7 @@ public class Server {
 
     private OutboundQueueChecker outboundQueueChecker;	// OutboundQueue 상태 모니터링 쓰레드
     private InboundQueueChecker inboundQueueChecker;	// InboundQueue 상태 모니터링 쓰레드
-    private InboundServer inboundServer;				// Push 요청을 수용하는 InboundServer
+    private InboundTcpSocketServer inboundServer;				// Push 요청을 수용하는 InboundServer
 
     public Server() {
         outboundServers = new HashMap<String, OutboundServer>();
@@ -74,7 +74,7 @@ public class Server {
 
         // startup InboundServer
         if (!embedded) {
-            inboundServer = new InboundServer(baseProperty.getInboundServerPort());
+            inboundServer = new InboundTcpSocketServer(baseProperty.getInboundServerPort());
             inboundServer.startup(inboundQueues);
         }
 

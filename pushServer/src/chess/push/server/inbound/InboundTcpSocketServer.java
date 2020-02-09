@@ -26,9 +26,9 @@ import io.netty.util.CharsetUtil;
  * Business Application으로부터 Push를 요청받는 Inbound Server<br>
  * -비동기 TCP 통신으로 Push할 메시지 수신
  */
-public class InboundServer {
+public class InboundTcpSocketServer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(InboundServer.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InboundTcpSocketServer.class);
 
     private final int port;		// Inbound Server listen port
 
@@ -39,7 +39,7 @@ public class InboundServer {
      * constructor with a paramter
      * @param port Inbound Server listen port
      */
-    public InboundServer(int port) {
+    public InboundTcpSocketServer(int port) {
         this.port = port;
     }
 
@@ -67,7 +67,7 @@ public class InboundServer {
                              pipeline.addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, PushConstant.DEFAULT_DELIMITER));
                              pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
                              pipeline.addLast(new PushMessageDecoder());
-                             pipeline.addLast(new InboundServerHandler(inboundQueues));
+                             pipeline.addLast(new InboundTcpSocketServerHandler(inboundQueues));
                          }
                      })
                      .option(ChannelOption.SO_REUSEADDR, true)
