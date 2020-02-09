@@ -46,7 +46,7 @@ public class Server {
      * @return Service ID를 key로 하는 InboundQueue collection
      */
     public Map<String, InboundQueue> startupServer(boolean embedded, PushBaseProperty baseProperty, Collection<PushServiceProperty> serviceProperties) {
-        LOG.info("[simple-push-server] starting...");
+        LOG.info("Wake Push Server STARTING...");
 
         if (!serviceProperties.isEmpty()) {
             // 개별 Push 서비스 속성에 따라 필요한 인스턴스 생성하고 Service ID를 key로 하는 collection에 저장
